@@ -27,13 +27,12 @@ export class CoinSpawner implements OnStart {
             CoinClone.Parent = Workspace.Coins
             this.coinsSpawned += 1
 
+            // Add Coin component
             components.addComponent<Coin>(CoinClone)
 
             // Check if max coins is reached
-            if (this.coinsSpawned >= max_coins) {
-                this.coinSpawnerConnection.connection.Disconnect()
-            }
-        }, 1)
+            if (this.coinsSpawned >= max_coins) { this.coinSpawnerConnection.connection.Disconnect() }
+        }, .5)
     }
 }
 

@@ -1,5 +1,5 @@
 import { Service, OnStart, OnInit } from "@flamework/core";
-import { Players } from "@rbxts/services";
+import { Players, StarterPlayer } from "@rbxts/services";
 
 @Service({})
 export class PlayerConnected implements OnStart {

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "rbxtsc",
-    "watch": "rbxtsc -w"
+    "watch": "rbxtsc -w",
+    "io-serve": "cd src && npx io-serve"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,7 @@
     "roblox-ts": "^2.3.0",
     "typescript": "~5.2.2"
   },
+
   "dependencies": {
     "@flamework/components": "^1.1.1",
     "@flamework/core": "^1.1.1",
