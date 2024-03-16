@@ -16,6 +16,12 @@ export class PlayerConnected implements OnStart {
 
         // Create Leaderstats
         this.CreateLeaderstatsForPlayer(player)
+
+        // Add Character Tag
+        if (player.Character) player.Character.AddTag("Character")
+        player.CharacterAdded.Connect((character) => {
+            character.AddTag("Character")
+        })
     }
 
     CreateLeaderstatsForPlayer(player: Player): void {

@@ -9,9 +9,9 @@ const CoinAsset: Part = ReplicatedStorage.Assets.WaitForChild("Coin") as Part
 
 const random = (mul: number) => (new Random().NextNumber() * 2 - 1) * mul
 
-const spawn_range = 100
+const spawn_range = 20
 const spawn_height = 14
-const max_coins = 100
+const max_coins = 1000
 
 @Service({})
 export class CoinSpawner implements OnStart {
@@ -24,7 +24,6 @@ export class CoinSpawner implements OnStart {
         this.coinSpawnerConnection = new TimedConnection(RunService.Heartbeat, () => {
             let CoinClone = CoinAsset.Clone()
             CoinClone.Position = new Vector3(random(spawn_range), spawn_height, random(spawn_range))
-            // CoinClone.Orientation = new Vector3(0, random(180), 0)
             CoinClone.Parent = Workspace.Coins
             this.coinsSpawned += 1
 
