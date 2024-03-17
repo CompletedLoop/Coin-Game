@@ -7,7 +7,7 @@
     "build": "rbxtsc",
     "watch": "rbxtsc -w",
     "io-serve": "cd src && npx io-serve",
-    "init": "npm i -D rbxts-transformer-flamework && npm i @flamework/core && npm run watch && rojo serve"
+    "init": "npm i -D rbxts-transformer-flamework && npm i @flamework/core && npm run watch"
   },
   "keywords": [],
   "author": "",
