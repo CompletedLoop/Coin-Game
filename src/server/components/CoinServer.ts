@@ -1,6 +1,8 @@
 /*
+
     Deprecated Serverside logic for Coins
     Superseeded by a optimized client sided implementation
+
 */
 
 
