@@ -12,7 +12,7 @@ export class NetworkTest implements OnStart {
 
     sendMessage() {
         this.messagesSent += 1
-        Events.message.fire(`Client has sent ${tostring(this.messagesSent)} messages`)
+        Events.message.fire(`Client has sent ${tostring(this.messagesSent)} messages!`)
     }
 }
 

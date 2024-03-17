@@ -5,7 +5,7 @@ import { Events } from "server/network";
 export class NetworkTestServer implements OnStart {
     onStart() {
         Events.message.connect((player: Player, str: string) => {
-            warn(str)
+            print(str)
         })
     }
 }
