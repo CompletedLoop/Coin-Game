@@ -13,12 +13,14 @@ const spawn_range = 20
 const spawn_height = 14
 const max_coins = 1000
 
-const components = Dependency<Components>()
+let components: Components
 
 @Service({})
 export class CoinSpawner implements OnStart {
     onStart() {
         this.coinsSpawned = 0
+
+        components = Dependency<Components>()
         
         // Spawn coin in a random position every second
         this.coinSpawnerConnection = new TimedConnection(RunService.Heartbeat, () => this.onHeartbeat(), .5)
