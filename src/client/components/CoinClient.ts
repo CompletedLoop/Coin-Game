@@ -6,6 +6,15 @@ interface Attributes {}
 @Component({tag: "Coin"})
 export class CoinClient extends BaseComponent<Attributes, Part> implements OnStart {
     onStart() {
-        print("yo")
+        //Bind Touched
+        this.TouchConnection = this.instance.Touched.Connect((hit) => this.onTouched(hit))
     }
+    
+    private onTouched(hit: BasePart) {
+
+    }
+}
+
+export interface CoinClient {
+    TouchConnection: RBXScriptConnection
 }

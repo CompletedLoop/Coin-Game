@@ -13,7 +13,7 @@ const upDownTweenInfo = new TweenInfo(
 const rotate_by = new Vector3(0, 2.5, 0)
 
 @Component({tag: "Coin"})
-export class Coin extends BaseComponent<{}, Part> implements OnStart, OnTick {
+export class CoinServer extends BaseComponent<{}, Part> implements OnStart, OnTick {
     onStart(): void {
         // Play up and down tween
         // const animatedPositon = this.instance.Position.sub(new Vector3(0, 2.5, 0))
@@ -21,8 +21,7 @@ export class Coin extends BaseComponent<{}, Part> implements OnStart, OnTick {
         //     this.instance, upDownTweenInfo, {Position: animatedPositon}
         // ).Play()
 
-        // Bind Touched
-        this.TouchConnection = this.instance.Touched.Connect((hit) => this.onTouched(hit))
+        
     }
 
     onTick(dt: number): void {
@@ -38,7 +37,7 @@ export class Coin extends BaseComponent<{}, Part> implements OnStart, OnTick {
         if (!player) return
 
         // End Connection
-        this.TouchConnection.Disconnect()
+        //this.TouchConnection.Disconnect()
 
         // Increment Money
         player.leaderstats.Money.Value += 2
@@ -46,8 +45,4 @@ export class Coin extends BaseComponent<{}, Part> implements OnStart, OnTick {
         // Destory
         this.instance.Destroy()
     }
-}
-
-export interface Coin {
-    TouchConnection: RBXScriptConnection
 }

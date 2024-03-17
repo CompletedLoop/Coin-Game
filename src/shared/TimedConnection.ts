@@ -1,3 +1,7 @@
+/*
+    A class to call a callback from a Signla only if a specified time has elapsed
+*/
+
 export class TimedConnection {
     constructor(event: RBXScriptSignal, callback: (args: any[]) => any, sleep: number) {
         this.sleep = sleep
