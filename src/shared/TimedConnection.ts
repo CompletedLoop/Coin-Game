@@ -3,14 +3,16 @@
 */
 
 export class TimedConnection {
-    constructor(event: RBXScriptSignal, callback: (args: any[]) => any, sleep: number) {
+    constructor(event: RBXScriptSignal, callback: (...args: unknown[]) => void, sleep: number) {
         this.sleep = sleep
         this.timer = 0
         
-        this.connection = event.Connect((args: any[]) => {
+        this.connection = event.Connect((...args: unknown[]) => {
             let time = tick()
             if (time > this.timer) {
-                callback(args)
+
+
+                callback(...args)
                 this.timer = time + this.sleep
             }
         })
