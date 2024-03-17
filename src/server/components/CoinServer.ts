@@ -5,7 +5,6 @@
 
 */
 
-
 import { BaseComponent, Component } from "@flamework/components";
 import { OnStart, OnTick } from "@flamework/core";
 import { Players, TweenService } from "@rbxts/services";

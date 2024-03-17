@@ -1,6 +1,6 @@
 import { OnStart, OnTick } from "@flamework/core";
 import { Component, BaseComponent } from "@flamework/components";
-import { Players } from "@rbxts/services";
+import { Players, Workspace } from "@rbxts/services";
 
 interface Attributes {}
 
@@ -8,6 +8,11 @@ interface Attributes {}
 export class Character extends BaseComponent<Attributes> implements OnStart, OnTick {
     onStart() {
         this.setAttribute("Speed", 1)
+
+        task.spawn(() => {
+            task.wait(1)
+            this.instance.Parent = Workspace.Characters
+        })
 
         // Get Humanoid
         this.humanoid = this.instance.WaitForChild("Humanoid") as Humanoid
