@@ -10,8 +10,6 @@ export class TimedConnection {
         this.connection = event.Connect((...args: unknown[]) => {
             let time = tick()
             if (time > this.timer) {
-
-
                 callback(...args)
                 this.timer = time + this.sleep
             }
