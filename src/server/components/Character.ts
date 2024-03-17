@@ -9,10 +9,7 @@ export class Character extends BaseComponent<Attributes> implements OnStart, OnT
     onStart() {
         this.setAttribute("Speed", 1)
 
-        task.spawn(() => {
-            task.wait(1)
-            this.instance.Parent = Workspace.Characters
-        })
+        task.delay(1, () => {this.instance.Parent = Workspace.Characters})
 
         // Get Humanoid
         this.humanoid = this.instance.WaitForChild("Humanoid") as Humanoid
@@ -24,7 +21,7 @@ export class Character extends BaseComponent<Attributes> implements OnStart, OnT
     onTick(dt: number): void {
         if (!this.humanoid) return
 
-        this.setAttribute("Speed", this.player.leaderstats.Money.Value/10 + 5)
+        this.setAttribute("Speed", this.player.leaderstats.Money.Value/10 + .2)
 
         this.applySpeed()
     }

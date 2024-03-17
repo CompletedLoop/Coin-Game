@@ -7,13 +7,9 @@ import { Functions } from "client/network";
 const player: plr = Players.LocalPlayer as plr
 const character = () => player.Character || player.CharacterAdded.Wait()[0]
 
-let tweenInfo = new TweenInfo(
-    1.5, 
-    Enum.EasingStyle.Quad,
-    Enum.EasingDirection.InOut,
-    9999999999,
-    true
-)
+const quad = Enum.EasingStyle.Quad
+const linr = Enum.EasingStyle.Linear
+const inOut = Enum.EasingDirection.InOut
 
 interface Attributes {}
 
@@ -31,11 +27,15 @@ export class CoinClient extends BaseComponent<Attributes, Part> implements OnSta
 
         // Tweens
         const animatedPositon = this.instance.Position.sub(new Vector3(0, 2.5, 0))
-        TweenService.Create(this.instance, tweenInfo, {Position: animatedPositon, Orientation: new Vector3(0, 360, 0)}).Play()
+        const animatedOrientation = new Vector3(0, 360, 0)
+        
+        // The position and rotation need seperate tween since one reverses and the other doesnt
+        TweenService.Create(this.instance, new TweenInfo(1.5, quad, inOut, math.huge, true), { Position: animatedPositon }).Play()
+        TweenService.Create(this.instance, new TweenInfo(1.5, linr, inOut, math.huge, false), { Orientation: animatedOrientation }).Play()
     }
     
     private async onTouched(hit: Part, SelectedTouchObject: SelectedTouch): Promise<void> {
-        if (this.awaitingAcceptance) return
+        //if (this.awaitingAcceptance) return
 
         this.awaitingAcceptance = true
         let accepted = Functions.CollectCoin(this.instance)

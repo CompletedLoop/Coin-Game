@@ -12,7 +12,7 @@ export class CoinEventHandler implements OnStart {
     }
 
     private CollectCoinRequest(player: plr, Coin: Part): boolean {
-        if (player.DistanceFromCharacter(Coin.Position)) {
+        if (player.DistanceFromCharacter(Coin.Position) <= max_distance_from_coin) {
             task.spawn(() => {this.CollectCoin(player, Coin)})
             return true
         }
