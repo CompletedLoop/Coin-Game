@@ -1,7 +1,7 @@
 import { Components } from "@flamework/components";
 import { Service, OnStart, OnTick, Dependency } from "@flamework/core";
 import { ReplicatedStorage, RunService, Workspace } from "@rbxts/services";
-import { Coin } from "server/components/Coin";
+import { Coin } from "server/components/CoinServer";
 import { TimedConnection } from "shared/TimedConnection";
 
 const Baseplate = Workspace.Baseplate

@@ -16,10 +16,10 @@ const rotate_by = new Vector3(0, 2.5, 0)
 export class Coin extends BaseComponent<{}, Part> implements OnStart, OnTick {
     onStart(): void {
         // Play up and down tween
-        const animatedPositon = this.instance.Position.sub(new Vector3(0, 2.5, 0))
-        TweenService.Create(
-            this.instance, upDownTweenInfo, {Position: animatedPositon}
-        ).Play()
+        // const animatedPositon = this.instance.Position.sub(new Vector3(0, 2.5, 0))
+        // TweenService.Create(
+        //     this.instance, upDownTweenInfo, {Position: animatedPositon}
+        // ).Play()
 
         // Bind Touched
         this.TouchConnection = this.instance.Touched.Connect((hit) => this.onTouched(hit))
@@ -27,9 +27,9 @@ export class Coin extends BaseComponent<{}, Part> implements OnStart, OnTick {
 
     onTick(dt: number): void {
         // Rotating animation
-        this.instance.Orientation = rotate_by.add(
-            this.instance.Orientation
-        )
+        // this.instance.Orientation = rotate_by.add(
+        //     this.instance.Orientation
+        // )
     }
 
     onTouched(hit: BasePart) {
@@ -41,7 +41,7 @@ export class Coin extends BaseComponent<{}, Part> implements OnStart, OnTick {
         this.TouchConnection.Disconnect()
 
         // Increment Money
-        player.leaderstats.Money.Value += 1
+        player.leaderstats.Money.Value += 2
 
         // Destory
         this.instance.Destroy()

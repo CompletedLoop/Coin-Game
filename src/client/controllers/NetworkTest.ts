@@ -7,7 +7,7 @@ import { TimedConnection } from "shared/TimedConnection";
 export class NetworkTest implements OnStart {
     onStart() {
         this.messagesSent = 0
-        new TimedConnection(RunService.Heartbeat, () => this.sendMessage(), 1)
+        //new TimedConnection(RunService.Heartbeat, () => this.sendMessage(), 1)
     }
 
     sendMessage() {
