@@ -4,18 +4,22 @@
     The SelectedTouch Object is passed to the callback as the second object
 */
 
-export type SelectedTouchInput = Instance | Instance[]
 export type SelectedTouchCallback = (hit: BasePart, SelectedTouchObject: SelectedTouch) => void
 
 export class SelectedTouch {
-    constructor(input: SelectedTouchInput, callback: SelectedTouchCallback, whitelistDescendants: boolean = false) {
-        this.input = input
+    constructor(Object: BasePart, SelectedObjects: BasePart[], callback: SelectedTouchCallback) {
+        this.SelectedObjects = SelectedObjects
 
-
+        // Create Connection
+        this.connection = Object.Touched.Connect((hit: BasePart) => {
+            if (this.SelectedObjects.includes(hit)) {
+                callback(hit, this)
+            }
+        })
     }
 }
 
 export interface SelectedTouch {
-    input: SelectedTouchInput
+    SelectedObjects: Instance[]
     connection: RBXScriptConnection
 }
