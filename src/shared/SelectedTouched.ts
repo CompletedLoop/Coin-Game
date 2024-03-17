@@ -7,7 +7,7 @@
 export type SelectedTouchCallback = (hit: BasePart, SelectedTouchObject: SelectedTouch) => void
 
 export class SelectedTouch {
-    constructor(Object: BasePart, SelectedObjects: BasePart[], callback: SelectedTouchCallback) {
+    constructor(Object: BasePart, SelectedObjects: any[], callback: SelectedTouchCallback) {
         this.SelectedObjects = SelectedObjects
 
         // Create Connection

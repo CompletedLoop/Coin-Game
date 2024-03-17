@@ -1,12 +1,12 @@
 import { Networking } from "@flamework/networking";
 
-interface ClientToServerEvents {
-    message(str: string): void
-}
+interface ClientToServerEvents {}
 
 interface ServerToClientEvents {}
 
-interface ClientToServerFunctions {}
+interface ClientToServerFunctions {
+    CollectCoin(Coin: Part): boolean
+}
 
 interface ServerToClientFunctions {}
 
