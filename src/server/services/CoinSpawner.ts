@@ -13,26 +13,28 @@ const spawn_range = 20
 const spawn_height = 14
 const max_coins = 1000
 
+const components = Dependency<Components>()
+
 @Service({})
 export class CoinSpawner implements OnStart {
     onStart() {
-        const components = Dependency<Components>()
-
         this.coinsSpawned = 0
-
+        
         // Spawn coin in a random position every second
-        this.coinSpawnerConnection = new TimedConnection(RunService.Heartbeat, () => {
-            let CoinClone = CoinAsset.Clone()
-            CoinClone.Position = new Vector3(random(spawn_range), spawn_height, random(spawn_range))
-            CoinClone.Parent = Workspace.Coins
-            this.coinsSpawned += 1
-
-            // Add Coin component
-            components.addComponent<Coin>(CoinClone)
-
-            // Check if max coins is reached
-            if (this.coinsSpawned >= max_coins) { this.coinSpawnerConnection.connection.Disconnect() }
-        }, .5)
+        this.coinSpawnerConnection = new TimedConnection(RunService.Heartbeat, () => this.onHeartbeat(), .5)
+    }
+    
+    onHeartbeat() {
+        let CoinClone = CoinAsset.Clone()
+        CoinClone.Position = new Vector3(random(spawn_range), spawn_height, random(spawn_range))
+        CoinClone.Parent = Workspace.Coins
+        this.coinsSpawned += 1
+    
+        // Add Coin component
+        components.addComponent<Coin>(CoinClone)
+    
+        // Check if max coins is reached
+        if (this.coinsSpawned >= max_coins) { this.coinSpawnerConnection.connection.Disconnect() }
     }
 }
 

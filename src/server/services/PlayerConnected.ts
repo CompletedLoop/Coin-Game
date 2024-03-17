@@ -29,7 +29,7 @@ export class PlayerConnected implements OnStart {
         let leaderstats = new Instance("Folder")
         leaderstats.Name = "leaderstats"
         leaderstats.Parent = player
-
+        
         // Money
         let money = new Instance("NumberValue")
         money.Name = "Money"
