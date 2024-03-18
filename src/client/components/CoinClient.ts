@@ -35,7 +35,7 @@ export class CoinClient extends BaseComponent<Attributes, Part> implements OnSta
     }
     
     private async onTouched(hit: Part, SelectedTouchObject: SelectedTouch): Promise<void> {
-        //if (this.awaitingAcceptance) return
+        if (this.awaitingAcceptance) return
 
         this.awaitingAcceptance = true
         let accepted = Functions.CollectCoin(this.instance)
