@@ -46,12 +46,12 @@ export class CoinClient extends BaseComponent<Attributes, Part> implements OnSta
             if (response) 
             {
                 SelectedTouchObject.connection.Disconnect()
-                print("server accepted")
+                //print("server accepted")
             }
             else
             {   
                 this.awaitingAcceptance = false
-                warn("server rejected")
+                //warn("server rejected")
             }
         })
     }

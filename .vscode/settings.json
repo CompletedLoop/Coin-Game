@@ -10,5 +10,29 @@
 	},
 	"eslint.run": "onType",
 	"eslint.format.enable": true,
-	"typescript.tsdk": "node_modules/typescript/lib"
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+		".vscode": true,
+		"**/include": true,
+		"include": true,
+		"node_modules": true,
+		".eslintrc.json": true,
+		".gitignore": true,
+		".prettierrc": true,
+		"aftman.toml": true,
+		"Coin Game.rbxl": true,
+		"Coin Game.rbxl.lock": true,
+		"default.project.json": true,
+		"tsconfig.json": true,
+		"flamework.build": true,
+		"package-lock.json": true,
+		"README.md": true
+	},
+	"explorerExclude.backup": {}
 }
