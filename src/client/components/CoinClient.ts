@@ -19,11 +19,11 @@ export class CoinClient extends BaseComponent<Attributes, Part> implements OnSta
         this.awaitingAcceptance = false
 
         //Bind Touched
-        this.TouchConnection = new SelectedTouch(
-            this.instance, 
-            character().GetChildren(), 
-            (hit, SelectedTouchObject) => this.onTouched(hit as Part, SelectedTouchObject) 
-        )
+        // this.TouchConnection = new SelectedTouch(
+        //     this.instance, 
+        //     character().GetChildren(), 
+        //     (hit, SelectedTouchObject) => this.onTouched(hit as Part, SelectedTouchObject) 
+        // )
 
         // Tweens
         const animatedPositon = this.instance.Position.sub(new Vector3(0, 2.5, 0))
@@ -42,7 +42,7 @@ export class CoinClient extends BaseComponent<Attributes, Part> implements OnSta
 
         if (await accepted) {
             SelectedTouchObject.connection.Disconnect()
-            print("less goo")
+            warn("coin collected")
         }
         else {
             this.awaitingAcceptance = false
