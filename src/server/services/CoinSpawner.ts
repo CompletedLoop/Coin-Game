@@ -14,13 +14,13 @@ const max_coins = 1000
 @Service({})
 export class CoinSpawner implements OnStart {
     onStart() {
-        task.wait(5) // allow the client to load first
+        //task.wait(5) // allow the client to load first
 
         // Init counter
         this.coinsSpawned = 0
         
         // Spawn coin in a random position every second
-        this.coinSpawnerConnection = new TimedConnection(RunService.Heartbeat, () => this.onHeartbeat(), 1)
+        this.coinSpawnerConnection = new TimedConnection(RunService.Heartbeat, () => this.onHeartbeat(), 3.1)
     }
     
     private onHeartbeat() {
