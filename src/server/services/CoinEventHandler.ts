@@ -1,7 +1,7 @@
 import { Service, OnStart, OnInit } from "@flamework/core";
 import { Functions } from "server/network";
 
-const max_distance_from_coin = 5
+const max_distance_from_coin = 8
 
 @Service({})
 export class CoinEventHandler implements OnStart {

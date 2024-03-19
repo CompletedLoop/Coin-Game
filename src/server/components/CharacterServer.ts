@@ -21,7 +21,7 @@ export class Character extends BaseComponent<Attributes> implements OnStart, OnT
     onTick(dt: number): void {
         if (!this.humanoid) return
 
-        this.setAttribute("Speed", this.player.leaderstats.Money.Value/10 + .2)
+        this.setAttribute("Speed", this.player.leaderstats.Money.Value/10 + 1)
 
         this.applySpeed()
     }

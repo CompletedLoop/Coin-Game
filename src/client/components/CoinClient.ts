@@ -14,16 +14,16 @@ const inOut = Enum.EasingDirection.InOut
 interface Attributes {}
 
 @Component({tag: "Coin"})
-export class CoinClient extends BaseComponent<Attributes, Part> implements OnStart{
+export class CoinClient extends BaseComponent<Attributes, Part> implements OnStart, OnTick {
     onStart() {
         this.awaitingAcceptance = false
 
         //Bind Touched
-        // this.TouchConnection = new SelectedTouch(
-        //     this.instance, 
-        //     character().GetChildren(), 
-        //     (hit, SelectedTouchObject) => this.onTouched(hit as Part, SelectedTouchObject) 
-        // )
+        this.TouchConnection = new SelectedTouch(
+            this.instance, 
+            character().GetChildren(), 
+            (hit, SelectedTouchObject) => this.onTouched(hit as Part, SelectedTouchObject) 
+        )
 
         // Tweens
         const animatedPositon = this.instance.Position.sub(new Vector3(0, 2.5, 0))
@@ -33,20 +33,27 @@ export class CoinClient extends BaseComponent<Attributes, Part> implements OnSta
         TweenService.Create(this.instance, new TweenInfo(1.5, quad, inOut, math.huge, true), { Position: animatedPositon }).Play()
         TweenService.Create(this.instance, new TweenInfo(1.5, linr, inOut, math.huge, false), { Orientation: animatedOrientation }).Play()
     }
+
+    onTick(dt: number): void {
+        
+    }
     
     private async onTouched(hit: Part, SelectedTouchObject: SelectedTouch): Promise<void> {
         if (this.awaitingAcceptance) return
-
         this.awaitingAcceptance = true
-        let accepted = Functions.CollectCoin(this.instance)
-
-        if (await accepted) {
-            SelectedTouchObject.connection.Disconnect()
-            warn("coin collected")
-        }
-        else {
-            this.awaitingAcceptance = false
-        }
+        Functions.CollectCoin(this.instance)
+        .andThen((response: boolean) => {
+            if (response) 
+            {
+                SelectedTouchObject.connection.Disconnect()
+                print("server accepted")
+            }
+            else
+            {   
+                this.awaitingAcceptance = false
+                warn("server rejected")
+            }
+        })
     }
 }
 

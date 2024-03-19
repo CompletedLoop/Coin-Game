@@ -14,7 +14,7 @@ const max_coins = 1000
 @Service({})
 export class CoinSpawner implements OnStart {
     onStart() {
-        //task.wait(5) // allow the client to load first
+        task.wait(5) // allow the client to load first
 
         // Init counter
         this.coinsSpawned = 0
